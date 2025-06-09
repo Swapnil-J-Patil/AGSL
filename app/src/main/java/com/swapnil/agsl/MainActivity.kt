@@ -17,6 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.swapnil.agsl.presentation.IMG_SHADER_SRC
 import com.swapnil.agsl.presentation.ImageShaderAnimation
+import com.swapnil.agsl.presentation.navigationAnimation.RevealShaderEffect
+import com.swapnil.agsl.presentation.screens.Screen1
+import com.swapnil.agsl.presentation.screens.Screen2
 import com.swapnil.agsl.presentation.ui.theme.AGSLTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,7 +31,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AGSLTheme {
-                ImageShaderAnimation(shader=shader, photo = photo)
+                //ImageShaderAnimation(shader=shader, photo = photo)
+                RevealShaderEffect(
+                    firstContent = {
+                        Screen1 {  }
+                    },
+                    secondContent = {
+                        Screen2 {  }
+                    }
+                )
             }
         }
     }

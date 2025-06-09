@@ -29,20 +29,32 @@ import kotlinx.coroutines.launch
 const val IMG_SHADER_SRC = """
     uniform float2 size;
     uniform float time;
+    uniform float cutoffTime;
     uniform shader composable;
-    
+
     half4 main(float2 fragCoord) {
-        float scale = 1 / size.x;
+        float scale = 1.0 / size.x;
         float2 scaledCoord = fragCoord * scale;
         float2 center = size * 0.5 * scale;
         float dist = distance(scaledCoord, center);
         float2 dir = scaledCoord - center;
-        float sin = sin(dist * 70 - time * 6.28);
-        float2 offset = dir * sin;
-        float2 textCoord = scaledCoord + offset / 30;
+
+        float waveSpeed = 6.28;
+
+        // Before cutoffTime: normal animation
+        // After cutoffTime: freeze wave generation, but continue wavefront propagation
+        float effectiveTime = min(time, cutoffTime);
+        float deltaTime = max(0.0, time - cutoffTime);
+
+        // Stop creating new waves after cutoff, but let the phase continue moving
+        float sinWave = sin(dist * 70.0 - effectiveTime * waveSpeed - deltaTime * waveSpeed);
+        float2 offset = dir * sinWave;
+
+        float2 textCoord = scaledCoord + offset / 30.0;
         return composable.eval(textCoord / scale);
     }
 """
+
 
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -85,8 +97,6 @@ fun ImageShaderAnimation(
                         renderEffect = RenderEffect
                             .createRuntimeShaderEffect(shader, "composable")
                             .asComposeRenderEffect()
-                    } else {
-                        renderEffect = null
                     }
                 },
             contentScale = ContentScale.FillHeight,
