@@ -1,4 +1,4 @@
-package com.swapnil.agsl.presentation.navigationAnimation
+package com.swapnil.agsl.presentation.navigation_animation
 
 import android.graphics.RenderEffect
 import android.graphics.RuntimeShader
@@ -21,8 +21,8 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-import com.swapnil.agsl.presentation.navigationAnimation.data.RevealTransitionParams
-import com.swapnil.agsl.presentation.navigationAnimation.data.WaveEffectParams
+import com.swapnil.agsl.presentation.navigation_animation.data.RevealTransitionParams
+import com.swapnil.agsl.presentation.navigation_animation.data.WaveEffectParams
 import kotlinx.coroutines.android.awaitFrame
 import kotlinx.coroutines.delay
 

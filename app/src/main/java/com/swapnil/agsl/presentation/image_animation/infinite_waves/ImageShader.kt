@@ -1,7 +1,6 @@
-package com.swapnil.agsl.presentation
+package com.swapnil.agsl.presentation.image_animation.infinite_waves
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.RenderEffect
 import android.graphics.RuntimeShader
 import android.os.Build
@@ -19,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asComposeRenderEffect
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
 import kotlinx.coroutines.delay

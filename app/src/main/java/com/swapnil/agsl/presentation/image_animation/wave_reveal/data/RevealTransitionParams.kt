@@ -1,4 +1,4 @@
-package com.swapnil.agsl.presentation.navigationAnimation.data
+package com.swapnil.agsl.presentation.image_animation.wave_reveal.data
 
 data class RevealTransitionParams(
     val speed: Float = 1200f,
